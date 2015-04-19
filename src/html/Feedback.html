@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>Feedback</title>
+</head>
+<body>
+    <form action="../php/feedback_form.php" method="post">
+        <fieldset>
+            <legend align="center">Enter Your Information and Comments Below</legend>
+            <p>
+                <label>Name:
+                    <input type="text" name = "name" size = "30" maxlength="40"/>
+                </label>
+            </p>
+            <p>
+                <label>University:
+                    <input type="text" name = "university" size = "30" maxlength="20"/>
+                </label>
+            </p>
+            <p>
+                <label>Email:
+                    <input type="text" name = "email" size = "30" maxlength="40"/>
+                </label>
+            </p>
+            <p>
+                <label>Comments:
+                    <textarea name = "comments" rows = "3" columns = "40"></textarea>
+                </label>
+            </p>
+        </fieldset>
+        <p align="center">
+            <input type="submit" name = "submit" value="Submit"/>
+        </p>
+    </form>
+</body>
+</html>
+
+<!-- HTML FILE FOR FEEDBACK PAGE>

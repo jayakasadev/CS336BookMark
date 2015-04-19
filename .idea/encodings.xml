@@ -2,5 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/build/tools/jsdoc3/rhino_modules/jsdoc/package.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/html/Feedback.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/humans.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/feedback_form.php" charset="UTF-8" />
   </component>
 </project>

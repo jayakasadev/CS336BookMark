@@ -4,7 +4,9 @@
 # TEAM
 
     <name> -- <role> -- <twitter>
-    Jaya Kasa   Design
+    Web Developer: Jaya Kasa
+    Twitter: @kasa288
+    Location: New Brunswick, NJ
 
 # THANKS
 
