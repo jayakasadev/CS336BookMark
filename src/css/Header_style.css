@@ -1,0 +1,15 @@
+html, body {
+    overflow-x: hidden;
+}
+
+.header{
+    padding: 10px;
+}
+
+.header li{
+    display: inline;
+}
+
+.content{
+    background: #f4f4f4;
+}

@@ -1,0 +1,8 @@
+.footer{
+    background: #DD6E7F;
+    padding: 10px;
+}
+
+.footer .nav li{
+    display: inline;
+}

@@ -13,28 +13,35 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link href="../../bootstrap3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/Feedback_style.css">
+    <link rel="stylesheet" href="../css/Header_style.css">
+    <link rel="stylesheet" href="../css/Footer_style.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-    <div class="header">
-        <div class="row">
-            <div class="col-md-1">
+<div class="header">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5">
+            <div class = "nav nav-pills pull-left teal">
+                <li role="presentation"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Browse</a></li>
             </div>
-            <div class="col-md-5">
-                <div class = "nav nav-pills pull-left">
-                    <li role="presentation"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#">Browse</a></li>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class = "nav nav-pills pull-right">
-                        <li role="presentation"><a href="#">Login</a></li>
-                        <li role="presentation"><a href="#">Cart</a></li>
-                        <li role="presentation"><a href="#">Help</a></li>
-                </div>
+        </div>
+        <div class="col-md-5">
+            <div class = "nav nav-pills pull-right teal">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a href="#">Cart</a></li>
+                <li role="presentation"><a href="#">Help</a></li>
             </div>
         </div>
     </div>
-
-    <div id="content"> <!-- Starting from here, the page will load the content of the page -->
+</div>
+<div class="content">

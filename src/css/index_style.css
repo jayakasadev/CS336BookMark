@@ -1,0 +1,8 @@
+html, body {
+    overflow-x: hidden;
+}
+
+.nav li{
+    display: inline;
+    padding: 10px;
+}

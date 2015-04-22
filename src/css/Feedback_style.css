@@ -1,38 +1,20 @@
-html, body {
-    overflow-x: hidden;
-}
-
-.header .row h3{
-    color: blueviolet;
-    text-shadow: black 0.2em 0.2em 0.2em;
-}
-
-.page-header{
-    color: white;
-    text-shadow: black 0.2em 0.2em 0.2em;
-}
-
-.nav li{
-    display: inline;
-    padding: 10px;
-}
 
 .jumbotron{
     background: url("../img/feedback_jumbotron.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 446px;
+    height: 451px;
     color: white;
-    text-shadow: black 0.4em 0.4em 0.4em;
+    margin-inside: 10px;
 }
 
 .jumbotron div{
     text-align: center;
-    padding: 5px;
+    padding: 80px;
     margin-top: 50px;
-    border: 4px solid white;
     color: white;
+    border: 2px solid white;
 }
 
 .jumbotron h1{
@@ -43,15 +25,19 @@ html, body {
     font-size: 30px;
 }
 
-.message p{
-    color: #d58512;
-    text-align: center;
+
+.infoinput h3{
+    color: #BA2A40;
 }
 
-.fields{
-    position: relative;
+.infoinput .fields{
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    background: white;
 }
 
-.extras li{
-    padding: 10px;
+.submitbutton{
+    padding-top: 10px;
 }
