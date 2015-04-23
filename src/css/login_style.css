@@ -1,6 +1,5 @@
-
 .jumbotron{
-    background: url("../img/feedback_jumbotron.jpg");
+    background: url("../img/login_jumbotron.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,32 +13,13 @@
     padding: 80px;
     margin-top: 50px;
     color: white;
-    border: 2px solid #FF193B;
+    border: 2px solid white;
 }
 
 .jumbotron h1{
     font-size: 130px;
-    background: #FF193B;
 }
 
 .jumbotron h4{
     font-size: 30px;
-    background: #FF193B;
-}
-
-
-.infoinput h3{
-    color: #BA2A40;
-}
-
-.fields{
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-    background: white;
-}
-
-.submitbutton{
-    padding-top: 10px;
 }

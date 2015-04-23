@@ -1,0 +1,61 @@
+.headline .jumbotron{
+    background: url("../img/main_jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    color: white;
+    margin-inside: 10px;
+}
+
+.headline .jumbotron div{
+    text-align: center;
+    padding: 80px;
+    margin-top: 50px;
+    color: white;
+    border: 2px solid #FF193B;
+}
+
+.headline .jumbotron h1{
+    font-size: 70px;
+    background: #FF193B;
+}
+
+.headline .jumbotron h4{
+    font-size: 30px;
+    background: #FF193B;
+}
+
+.fields{
+    padding-top: 5px;
+    padding-bottom: 12px;
+    background: white;
+}
+
+.submitbutton{
+    padding-top: 10px;
+}
+
+.slogans{
+    padding-bottom: 20px;
+}
+
+.slogans .slogan{
+    background: white;
+    color: #FF5B7F;
+    border-radius: 12px;
+}
+
+.schools{
+    background: white;
+}
+
+.schools h2{
+    color: #393c3d;
+    font-size: 24px;
+}
+
+.schools p{
+    font-size: 15px;
+    margin-bottom: 13px;
+}

@@ -1,8 +1,29 @@
 .footer{
-    background: #DD6E7F;
+    background: #FF7A97;
     padding: 10px;
 }
 
 .footer .nav li{
     display: inline;
+}
+
+/* tab color */
+.footer .nav-pills>li>a {
+    background-color: #FF7A97;;
+    border-color: #f4f4f4;
+    color: #f4f4f4;
+}
+
+/* active tab color */
+.footer .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #FF7A97;
+    background-color: white;
+    border: 1px solid #FF7A97;
+}
+
+/* hover tab color */
+.footer .nav-pills>li>a:hover {
+    border-color: white;
+    color: #FF7A97;
+    background-color: white;
 }

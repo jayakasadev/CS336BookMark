@@ -6,3 +6,13 @@ html, body {
     display: inline;
     padding: 10px;
 }
+
+.jumbotron{
+    background: url("../img/feedback_jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 451px;
+    color: white;
+    margin-inside: 10px;
+}

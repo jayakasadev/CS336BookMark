@@ -1,6 +1,5 @@
-
 .jumbotron{
-    background: url("../img/feedback_jumbotron.jpg");
+    background: url("../img/newaccount_jumbotron.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -18,7 +17,7 @@
 }
 
 .jumbotron h1{
-    font-size: 130px;
+    font-size: 100px;
     background: #FF193B;
 }
 
@@ -28,15 +27,13 @@
 }
 
 
-.infoinput h3{
+.infoinput h2{
     color: #BA2A40;
 }
 
 .fields{
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    padding-top: 5px;
+    padding-bottom: 12px;
     background: white;
 }
 
