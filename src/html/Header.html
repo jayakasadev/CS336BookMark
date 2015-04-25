@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
     <title>BookMark(et.)</title>
 
     <link rel="stylesheet" href="css/normalize.css">
@@ -14,8 +12,9 @@
     <link rel="stylesheet" href="../css/Header_style.css">
     <link rel="stylesheet" href="../css/Footer_style.css">
     <link href="../../bootstrap3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="../../bootstrap3.3.4/css/custom.css" rel="stylesheet" type="text/css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script type="text/javascript" src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="header">
@@ -23,17 +22,18 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-5">
-            <div class = "nav nav-pills pull-left teal">
-                <li role="presentation"><a href="../index.php">Home</a></li>
-                <li role="presentation"><a href="#">Browse</a></li>
+            <div class = "nav nav-pills pull-left teal" id="left">
+                <li role="presentation" id="home"><a href="../index.php">Home</a></li>
+                <li role="presentation" id="search"><a href="../php/Browse.php">Search</a></li>
             </div>
         </div>
         <div class="col-md-5">
-            <div class = "nav nav-pills pull-right teal">
-                <li><a href="#">Login</a></li>
-                <li><a href="../php/NewAccount.php">New User</a></li>
-                <li role="presentation"><a href="#">Cart</a></li>
-                <li role="presentation"><a href="#">Help</a></li>
+            <div class = "nav nav-pills pull-right" id="right">
+                <li role="presentation" id="account"><a href="../php/Account.php">Account</a></li>
+                <li role="presentation" id="login"><a href="../php/Login.php">Login</a></li>
+                <li role="presentation" id="newuser"><a href="../php/NewAccount.php">New User</a></li>
+                <li role="presentation" id="cart"><a href="../php/Cart.php">Cart</a></li>
+                <li role="presentation" id="help"><a href="../html/Help.html">Help</a></li>
             </div>
         </div>
     </div>

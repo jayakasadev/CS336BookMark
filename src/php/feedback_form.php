@@ -9,8 +9,6 @@
  */
 
 #feedback_form.php
-$page_title = "Feedback";
-
 #header
 include ("../html/Header.html");
 
@@ -26,9 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $to = "kasa288@gmail.com";
         $subject = "Feedback From BookMark(et.)";
-        $headers = "From: " . $email . '';
 
-        @mail($to, $subject, $comment . ' from ' . $email, $headers);
+        //mail($to, $subject, $comment . ' from ' . $email);
     }
 }
 ?>
@@ -90,4 +87,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     #footer file
     include ("../html/Footer.html");
 ?>
+
+
 

@@ -1,5 +1,7 @@
 html, body {
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .header .nav-pills>li>a {
@@ -29,5 +31,20 @@ html, body {
 }
 
 .content{
+    padding-bottom: 0px;
     background: #f4f4f4;
+}
+
+
+div.clear_both {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    clear: both;
+}
+
+div {
+    line-height: 1.4em;
 }

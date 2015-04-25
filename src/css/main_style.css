@@ -1,9 +1,13 @@
+.headline{
+    height: 27%;
+}
+
 .headline .jumbotron{
     background: url("../img/main_jumbotron.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 100%;
     color: white;
     margin-inside: 10px;
 }
@@ -16,14 +20,16 @@
     border: 2px solid #FF193B;
 }
 
-.headline .jumbotron h1{
+.h1first{
     font-size: 70px;
     background: #FF193B;
+    padding-left: 10%;
 }
 
-.headline .jumbotron h4{
-    font-size: 30px;
+.h1second{
+    font-size: 70px;
     background: #FF193B;
+    padding-right: 10%;
 }
 
 .fields{
@@ -32,30 +38,168 @@
     background: white;
 }
 
-.submitbutton{
-    padding-top: 10px;
-}
-
 .slogans{
     padding-bottom: 20px;
 }
 
 .slogans .slogan{
     background: white;
-    color: #FF5B7F;
     border-radius: 12px;
+    margin: 1.1%;
+    width: 31%;
+}
+
+.slogan legend{
+    background: #FF193B;
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    padding: 2%;
+    margin: 3%;
+}
+
+.slogan p{
+    color: #FF193B;
+    font-size: 120%;
 }
 
 .schools{
     background: white;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: auto;
 }
 
-.schools h2{
+.schools h1{
+    padding: 40px;
     color: #393c3d;
-    font-size: 24px;
+    font-size: 200%;
+    color: #FF193B;
 }
 
-.schools p{
-    font-size: 15px;
-    margin-bottom: 13px;
+.schools a{
+    color: #FF193B;
+}
+
+.schools row{
+    text-align: center;
+    align-content: center;
+    padding: 10px;
+}
+
+/* Carousel */
+
+.slider {
+    position: relative;
+    width: 100%;
+    width: 100%;
+}
+
+.slide {
+    background: transparent url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/flipboard/feature-gradient-transparent.png') center center no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+.active-slide {
+    display: block;
+}
+
+.slider-nav {
+    padding-bottom: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.arrow-prev {
+    margin-right: 45px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 9px;
+}
+
+.arrow-next {
+    margin-left: 45px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 9px;
+}
+
+.slider-dots {
+    list-style: none;
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.slider-dots li {
+    color: #262626;
+    display: inline;
+    font-size: 30px;
+    margin-right: 5px;
+}
+
+.slider-dots li.active-dot {
+    color: #FF193B;
+}
+
+.newusers .jumbotron{
+    background: url("../img/main_create_jumbotron.jpg");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 500px;
+    color: white;
+    padding: 1%;
+}
+
+
+.newusers .jumbotron div{
+    text-align: center;
+    padding: 80px;
+    margin-top: 50px;
+    color: white;
+    border: 2px solid #FF193B;
+    padding:  4%;
+}
+
+.newusers .jumbotron h1{
+    font-size: 60px;
+    background: #FF193B;
+    padding-left: 3%;
+}
+
+.newusers .jumbotron h2{
+    font-size: 50px;
+    background: #FF193B;
+    padding-right: 3%;
+}
+
+.btn.btn-lg{
+    font-size: 30px;
+    background-color: #FF193B;
+    border: 1px solid #f4f4f4;
+}
+
+.btn.btn-lg a{
+    color: white;
+}
+
+.btn.btn-lg:hover{
+    border-color: white;
+    background-color: white;
+}
+
+.btn.btn-lg a:hover{
+    color: #FF5B7F;
+}
+
+.suggestions{
+    padding-bottom: 20px;
+}
+
+.logos{
+    display: inline;
 }

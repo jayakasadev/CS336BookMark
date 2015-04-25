@@ -29,11 +29,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 ?>
 
+<script type="text/javascript" src="../js/headermodifiers/newuserhead.js"></script>
 <div class="jumbotron">
     <div class = "container">
         <?php
         if(isset($_POST['submit']) && !empty($_POST['username']) &&  !empty($_POST['password']) && !empty($_POST['confirm']) && !empty($_POST['university'])){
-            echo "<script> location.replace('../index.php'); </script>";
+
+
+
+            echo "<script> location.replace('../home.php'); </script>";
         }
         else if(isset($_POST['submit'])) {
             if (empty($_POST['username'])) {

@@ -9,14 +9,18 @@
 //script contains database access info
 
 //set db access info as constants
-DEFINE (‘DB_USER’, ‘jkasa’);
-DEFINE (‘DB_PASSWORD’, ‘*gajl%82160*’);
-DEFINE (‘DB_HOST’, ‘localhost’);
-DEFINE (‘DB_NAME’, ‘bookmark’);
+DEFINE ("DB_USER", "myproject");
+DEFINE ("DB_PASSWORD", "*gajl%82160*");
+DEFINE ("DB_HOST", "localhost");
+DEFINE ("DB_NAME", "bookmark");
+DEFINE ("DB_PORT", "3306");
+
+//phpinfo();
 
 //connect
-$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die (‘Could not connect to MySQL: ’ . mysqli_connect_error() );
-
+$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT);
+if(!$dbc){
+    die ("Could not connect to MySQL: " . mysqli_connect_error());
+}
 //set encoding
-mysqli_set_charset($dbc, ‘utf8’);
-
+mysqli_set_charset($dbc, "utf8");

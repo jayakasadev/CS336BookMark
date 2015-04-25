@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/bootstrap3.3.4/css/custom.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/build/tools/jsdoc3/rhino_modules/jsdoc/package.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/index.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/Feedback_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/Footer_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/Header_style.css" charset="UTF-8" />
@@ -11,15 +9,27 @@
     <file url="file://$PROJECT_DIR$/src/css/login_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/main_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/newaccount_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/html/About.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Creators.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Footer.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Header.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/html/Help.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Jumbotron.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/MainPage.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/humans.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/newuserhead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/schoolloader.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Account.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Bought.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Browse.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Cart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Home.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Item Info.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/New Item.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/NewAccount.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Sold.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/feedback_form.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/mysqlconnection.php" charset="UTF-8" />
   </component>
