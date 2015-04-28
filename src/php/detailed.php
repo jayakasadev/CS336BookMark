@@ -3,7 +3,7 @@ include("hello.php");
 
 session_start();
 echo "Detailed info:<br>";
-$stmt = $conn->prepare("SELECT * FROM Item  U WHERE (U.status='listed' OR U.status='pending') AND itemid=?");
+$stmt = $conn->prepare("SELECT * FROM Item  U, User S, University C  WHERE (U.status='listed' OR U.status='pending') AND itemid=? AND U.itemowner=S.username AND S.universityid=C.universityid");
 $stmt->bind_param("i",$_GET["id"]);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -18,6 +18,7 @@ echo "condition:". $row["itemcondition"]. "<br>";
 echo "pickup offered:". $row["pickup"] . "<br>";
 echo "price:". $row["price"]. "<br>";
 echo "shipping cost:". $row["shippingcost"] . "<br>";
+echo "university:". $row["universityname"] . "<br>";
 $_SESSION["title"]=$row["title"];
 $_SESSION["itemid"]=$row["itemid"];
 $_SESSION["price"]=$row["price"];
