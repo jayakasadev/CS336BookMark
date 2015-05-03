@@ -30,30 +30,33 @@ LEFT JOIN CreditCard C ON U.cardid=C.cardid LEFT JOIN Address A2 ON C.address=A2
 
 $stmt->bind_param("s",$_SESSION["user"]);
 $stmt->execute();
-$result = $stmt->get_result();
-echo "number of results".$result->num_rows."<br>";
-foreach( $result as $row) {
+$stmt->bind_result($street, $city, $state, $zip, $ctype, $card, $cardholder, $expDate, $street2, $city2, $state2, $zip2, $number, $routing);
+//echo "number of results".$result->num_rows."<br>";
+while( $stmt->fetch()) {
 echo '<html>
 <body>
 <form method="POST" action="personal.php">';
+
 echo "Shipping Address: <br>";
-echo '<input type="text" name="street" value="'.$row["street"].'"/><br>';
-echo '<input type="text" name="city" value="'.$row["city"].'"/><br>';
-echo '<input type="text" name="state" value="'.$row["state"].'"/><br>';
-echo '<input type="text" name="zip" value="'.$row["zip"].'"/><br>';
-echo 'Card info: <br>';
-echo 'type:<input type="text" name="ctype" value="'.$row["ctype"].'"/><br>';
-echo 'card #<input type="text" name="card" value="'. $row["card"] . "\"/><br>";
-echo 'billing name<input type="text" name="cardholder" value="'. $row["cardholder"]. "\"/><br>";
-echo 'exp date<input type="text" name="expdate" value="'. $row["expDate"] . "\"/><br>";
+echo 'street<input type="text" name="street" value="'.$street.'"/><br>';
+echo 'city<input type="text" name="city" value="'.$city.'"/><br>';
+echo 'state<input type="text" name="state" value="'.$state.'"/><br>';
+echo 'zip<input type="text" name="zip" value="'.$zip.'"/><br>';
+
+echo 'type:<input type="text" name="ctype" value="'.$ctype.'"/><br>';
+echo 'card #<input type="text" name="card" value="'. $card . "\"/><br>";
+echo 'billing name<input type="text" name="cardholder" value="'. $cardholder. "\"/><br>";
+echo 'exp date<input type="text" name="expdate" value="'. $expDate . "\"/><br>";
 echo 'Billing Address:';
-echo '<input type="text" name="bstreet" value="'.$row["street2"].'"/><br>';
-echo '<input type="text" name="bcity" value="'.$row["city2"].'"/><br>';
-echo '<input type="text" name="bstate" value="'.$row["state2"].'"/><br>';
-echo '<input type="text" name="bzip" value="'.$row["zip2"].'"/><br>';
+
+echo 'street<input type="text" name="bstreet" value="'.$street2.'"/><br>';
+echo 'city<input type="text" name="bcity" value="'.$city2.'"/><br>';
+echo 'state<input type="text" name="bstate" value="'.$state2.'"/><br>';
+echo 'zip<input type="text" name="bzip" value="'.$zip2.'"/><br>';
+
 echo 'Bank Account:';
-echo '<input type="text" name="number" value="'.$row["number"].'"/><br>';
-echo '<input type="text" name="routing" value="'.$row["routing"].'"/><br>';
+echo '<input type="text" name="number" value="'.$number.'"/><br>';
+echo '<input type="text" name="routing" value="'.$routing.'"/><br>';
 echo '<input type="submit" value="update" />
 </form>';
 echo "<a href=\"/home.php\"> home </a>        &nbsp; &nbsp; &nbsp; &nbsp;       ";

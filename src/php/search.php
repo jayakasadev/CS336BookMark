@@ -13,10 +13,10 @@ sort by:<select name="sort">
  <?php include("hello.php");
  $stmt = $conn->prepare("SELECT U.universityid, U.universityname FROM University U");
         $stmt->execute();
-$result = $stmt->get_result();
-foreach( $result as $row) {
+$stmt->bind_result($universityid, $universityname);
+while( $stmt->fetch()) {
 
-echo "<option value=\"".$row["universityid"]."\">". $row["universityname"]."</option><br>";
+echo "<option value=\"".$universityid."\">". $universityname."</option><br>";
 
 
 }
@@ -34,13 +34,15 @@ if (isset ($_GET["sort"])){ if ($_GET["sort"] == "title"){$sort ="title";} else 
 $search="%%";
 $start=0;
 $university='';
-if (isset ($_GET["q"]) ){ $search='%'.$_GET["q"].'%';}
+echo "search for: ";
+if (isset ($_GET["q"]) ){ $search='%'.$_GET["q"].'%'; $_GET["q"]." ";}
 if (isset ($_GET["start"])){$start=$_GET["start"];}
 if (isset ($_GET["university"])){$university=$_GET["university"];}
-echo $sort;
+echo "sorted by:".$sort." ";
+$title; $price; $itemowner; $itemid; $date; $rank; $seller;$universityname="";
 if ($sort=="rank"){
 if ($university != ''){
-$stmt = $conn->prepare("SELECT L.title, L.price, L.itemowner, L.itemid, L.date FROM
+$stmt = $conn->prepare("SELECT L.title, L.price, L.itemowner, L.itemid, L.date, slist.rank, slist.seller FROM
 
 ((SELECT T.seller AS seller, COUNT(*) AS rank FROM
 
@@ -64,11 +66,13 @@ Item L, User U
 
 WHERE L.itemowner=slist.seller AND (L.status='listed' OR L.status='pending') AND L.title LIKE ?  AND U.username=slist.seller AND U.universityid=?
 
-ORDER BY (slist.rank) DESC LIMIT ?,10");
+ORDER BY (slist.rank) DESC, slist.seller DESC LIMIT ?,10");
 
 $stmt->bind_param("sii",$search, $university,$start);
+$stmt->execute();
+$stmt->bind_result($title, $price, $itemowner, $itemid, $date, $rank, $seller);
 }else{
-$stmt = $conn->prepare("SELECT L.title, L.price, L.itemowner, L.itemid, L.date FROM
+$stmt = $conn->prepare("SELECT L.title, L.price, L.itemowner, L.itemid, L.date, slist.rank, slist.seller FROM
 
 ((SELECT T.seller AS seller, COUNT(*) AS rank FROM
 
@@ -92,10 +96,11 @@ Item L
 
 WHERE L.itemowner=slist.seller AND (L.status='listed' OR L.status='pending') AND L.title LIKE ?  
 
-ORDER BY (slist.rank) DESC LIMIT ?,10");
+ORDER BY (slist.rank) DESC, slist.seller DESC LIMIT ?,10");
 
 $stmt->bind_param("si",$search, $start);
-
+$stmt->execute();
+$stmt->bind_result($title, $price, $itemowner, $itemid, $date, $rank, $seller);
 
 
 
@@ -105,40 +110,51 @@ $stmt->bind_param("si",$search, $start);
 
 }else if (($sort=="school") ){
 
-$stmt = $conn->prepare("SELECT L.title, L.price, L.itemowner, L.itemid, L.date FROM
+$stmt = $conn->prepare("SELECT L.title, L.price, L.itemowner, L.itemid, L.date, slist.rank, C.universityname FROM
 (SELECT COUNT(*) as rank, U.universityid FROM
  User U, Item L
 WHERE L.itemowner=U.username AND (L.status='listed' OR L.status='pending') AND L.title LIKE ?
 GROUP BY U.universityid) as slist,
 Item L,
-User U
+User U,
+University C
 WHERE 
-L.itemowner=U.username AND U.universityid=slist.universityid AND (L.status='listed' OR L.status='pending') AND L.title LIKE ?
-ORDER BY (slist.rank) DESC LIMIT ?,10");
+L.itemowner=U.username AND U.universityid=slist.universityid AND C.universityid=slist.universityid  AND (L.status='listed' OR L.status='pending') AND L.title LIKE ?
+ORDER BY (slist.rank) DESC, C.universityname DESC LIMIT ?,10");
 
 $stmt->bind_param("ssi",$search, $search, $start);
-
+$stmt->execute();
+$stmt->bind_result($title, $price, $itemowner, $itemid, $date, $rank, $universityname);
 }else{
 
 if ($university != ''){
 $stmt = $conn->prepare("SELECT U.title, U.itemid, U.price, U.date FROM Item  U, User S WHERE (U.status='listed' OR U.status='pending') AND U.title LIKE ?  AND U.itemowner=S.username AND S.universityid=? ORDER BY ".$sort." LIMIT ?, 10");
 
 $stmt->bind_param("sii",$search,$university,$start);
+$stmt->execute();
+$stmt->bind_result($title, $itemid, $price, $date);
 }else{
-$stmt = $conn->prepare("SELECT U.title, U.itemid, U.price, U.date FROM Item  U WHERE (U.status='listed' OR U.status='pending') AND U.title LIKE ?  ORDER BY ".$sort." LIMIT ?, 10");
+$stmt = $conn->prepare("SELECT U.title, U.itemid, U.price, U.date, C.universityname FROM Item  U, User S, University C WHERE U.itemowner=S.username AND S.universityid=C.universityid AND(U.status='listed' OR U.status='pending') AND U.title LIKE ?  ORDER BY ".$sort." LIMIT ?, 10");
 $stmt->bind_param("si",$search,$start);
+$stmt->execute();
+$stmt->bind_result($title, $itemid, $price, $date, $universityname);
 }
 }
 
-$stmt->execute();
-$result = $stmt->get_result();
-echo "number of results".$result->num_rows."<br>";
+
+//echo "number of results".$result->num_rows."<br>";
 $_SESSION["start"]=$start;
 echo $stmt->error;
 echo "<table>";
-foreach( $result as $row) {
+while( $stmt->fetch()) {
 
-echo "<tr><td><a href=\"detailed.php?id=".$row["itemid"]."\">". $row["title"]."</a></td><td>".$row["price"].'</td>&nbsp<td>'. $row["date"]. "</td></tr>";
+echo "<tr><td><a href=\"detailed.php?id=".$itemid."\">". $title."</a></td><td>".$price.'</td>&nbsp<td>'. $date. "</td>";
+
+if (isset($seller)){echo "<td>".$seller."</td>";}
+if (isset($universityname)){echo "<td>".$universityname."</td>"; if (isset($rank)){ echo "<td>".$rank."</td>";}}
+
+
+echo"</tr>";
 
 
 }
