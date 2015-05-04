@@ -26,10 +26,27 @@ if(isset($_SESSION['username'])){
     <form action="../php/Browse.php" method="post">
         <div class="row">
             <div class="col-sm-1"></div>
-            <div align="center" class="col-sm-9">
+            <div align="center" class="col-sm-5">
                 <input type="text" class="form-control" name="search" placeholder="Search:"
                        aria-describedby="basic-addon1"
                        value="<?php if (isset($_POST['search'])) echo $_POST['search']; ?>">
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Order By:
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">By Title Ascending</a></li>
+                        <li><a href="#">By Title Descending</a></li>
+                        <li><a href="#">By Date Ascending</a></li>
+                        <li><a href="#">By Date Descending</a></li>
+                        <li><a href="#">By Views Ascending</a></li>
+                        <li><a href="#">By Views Descending</a></li>
+                        <li><a href="#">New - >Used</a></li>
+                        <li><a href="#">By Type</a></li>
+                    </ul>
+                </div>
             </div>
             <div align="center" class="col-sm-1">
                 <p class="submitbutton">
