@@ -5,32 +5,68 @@
     <file url="file://$PROJECT_DIR$/src/css/Feedback_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/Footer_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/Header_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/account_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/card_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/cart_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/checkout_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/home_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/index_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/itemedit_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/iteminfo_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/login_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/main_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/css/newaccount_style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/css/sold_style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/About.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Creators.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Footer.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Header.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/html/Help.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/html/Jumbotron.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/html/MainPage.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/humans.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/Heightsetter.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/accounthead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/althomehead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/altiteminfohead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/altsearchhead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/carthead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/checkouthead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/homehead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/iteminfohead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/loginhead.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/js/headermodifiers/newuserhead.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/headermodifiers/searchhead.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/js/schoolloader.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Account.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Bought.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Browse.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Card.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Cart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Checkout.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/EditItem.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Home.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Item Info.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/Items.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Login.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/New Item.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/NewAccount.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/NewAccount_Func.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/Sold.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/card_func.inc.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/checkout_func.inc.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/checkout_func.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/delete_cart_item.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/deleteitem.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/edititem_func.inc.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/feedback_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/item_func.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/login_func.inc.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/logout.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/php/mysqlconnection.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/remove.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/sale.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/shipped.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/show_image.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/php/upload.php" charset="UTF-8" />
   </component>
 </project>

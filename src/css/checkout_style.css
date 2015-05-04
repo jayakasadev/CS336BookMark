@@ -1,0 +1,26 @@
+.jumbotron{
+    background: url("../img/checkout_jumbotron.jpg");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 50%;
+    color: white;
+    margin-inside: 10px;
+}
+
+.jumbotron div{
+    text-align: center;
+    padding: 80px;
+    margin-top: 50px;
+    color: white;
+    border: 2px solid #FF193B;
+}
+
+.jumbotron h1{
+    background: #FF193B;
+}
+
+.jumbotron h4{
+    font-size: 30px;
+    background: #FF193B;
+}

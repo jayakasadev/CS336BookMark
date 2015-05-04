@@ -2,7 +2,15 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
+
+
+#wrapper {
+    min-height:100%;
+    position:relative;
+}
+
 
 .header .nav-pills>li>a {
     background-color: white;;
@@ -23,7 +31,13 @@ html, body {
 }
 
 .header{
-    padding: 10px;
+    padding: 9px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index:1;
 }
 
 .header li{
@@ -31,8 +45,11 @@ html, body {
 }
 
 .content{
-    padding-bottom: 0px;
     background: #f4f4f4;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    padding-bottom: 3.5%;
 }
 
 

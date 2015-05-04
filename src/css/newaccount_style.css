@@ -3,21 +3,20 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 451px;
+    height: 43%;
     color: white;
     margin-inside: 10px;
 }
 
 .jumbotron div{
     text-align: center;
-    padding: 80px;
-    margin-top: 50px;
+    padding: 4%;
+    margin-top: 3.5%;
     color: white;
     border: 2px solid #FF193B;
 }
 
 .jumbotron h1{
-    font-size: 100px;
     background: #FF193B;
 }
 
@@ -26,17 +25,23 @@
     background: #FF193B;
 }
 
+.input{
+    background: white;
+}
+
+.container{
+    border-radius: 12px;
+}
 
 .infoinput h2{
     color: #BA2A40;
 }
 
 .fields{
-    padding-top: 5px;
-    padding-bottom: 12px;
     background: white;
+    padding-bottom: 1%;
 }
 
 .submitbutton{
-    padding-top: 10px;
+    padding-top: 1%;
 }

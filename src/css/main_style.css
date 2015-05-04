@@ -1,8 +1,9 @@
 .headline{
-    height: 27%;
+    height: 47%;
 }
 
 .headline .jumbotron{
+    position: relative;
     background: url("../img/main_jumbotron.jpg");
     background-size: cover;
     background-position: center;
@@ -145,6 +146,10 @@
     color: #FF193B;
 }
 
+.newusers{
+    height: 47%;
+}
+
 .newusers .jumbotron{
     background: url("../img/main_create_jumbotron.jpg");
     background-size: cover;
@@ -152,7 +157,7 @@
     background-repeat: no-repeat;
     height: 500px;
     color: white;
-    padding: 1%;
+    padding: .5%;
 }
 
 
@@ -162,7 +167,7 @@
     margin-top: 50px;
     color: white;
     border: 2px solid #FF193B;
-    padding:  4%;
+    padding:  3%;
 }
 
 .newusers .jumbotron h1{
@@ -175,31 +180,4 @@
     font-size: 50px;
     background: #FF193B;
     padding-right: 3%;
-}
-
-.btn.btn-lg{
-    font-size: 30px;
-    background-color: #FF193B;
-    border: 1px solid #f4f4f4;
-}
-
-.btn.btn-lg a{
-    color: white;
-}
-
-.btn.btn-lg:hover{
-    border-color: white;
-    background-color: white;
-}
-
-.btn.btn-lg a:hover{
-    color: #FF5B7F;
-}
-
-.suggestions{
-    padding-bottom: 20px;
-}
-
-.logos{
-    display: inline;
 }

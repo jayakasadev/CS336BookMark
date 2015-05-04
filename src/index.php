@@ -14,6 +14,12 @@ else
 }
 
 $msg = "You have visited this page ".  $_SESSION['counter'] . " times in this session.";
+
+
+if(isset($_COOKIE['username'])){
+    require "php/login_func.inc.php";
+    redirect_user();
+}
 ?>
 
 <!doctype html>
@@ -36,9 +42,13 @@ $msg = "You have visited this page ".  $_SESSION['counter'] . " times in this se
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
-
+<?php
+$total = 0;
+$slidecount = 0;
+?>
 <body>
-<div class="header">
+<div id="wrapper">
+    <div class="header">
     <div class="row">
         <div class="col-md-1">
         </div>
@@ -56,11 +66,8 @@ $msg = "You have visited this page ".  $_SESSION['counter'] . " times in this se
         </div>
     </div>
 </div>
-<?php
-$total = 0;
-$slidecount = 0;
-?>
-<div class="content">
+
+    <div class="content">
     <div class="headline">
         <div class="jumbotron col-sm-12 container">
             <div class="container">
@@ -73,7 +80,7 @@ $slidecount = 0;
 
     <div class="holder">
         <div class="container">
-            <div class="row slogans">
+            <div class="row slogans">z
                 <div class="col-sm-4 slogan">
                     <legend align="center">Find what you need</legend>
                     <p align="justify">Tired of looking through message boards to see what your classmates are selling? Wish it were easier to get what you need for school? At BookMark(et.), we make it easy for you to connect with your classmates and find the things you need.</p>
@@ -104,12 +111,10 @@ $slidecount = 0;
             $display = 6;
 
 
-            $q = "select * from university order by universityname";
+            $q = "select universityname, logo from university order by universityname";
 
             //run query
             $r = @mysqli_query($dbc, $q);
-
-
 
             if($r){
                 while($row = mysqli_fetch_row($r)){
@@ -131,23 +136,27 @@ $slidecount = 0;
 
                     echo "<div class='col-sm-4'>";
 
-                    $file = "img/$row[0].jpg";
-                    if(file_exists($file)){
-                        //echo "<input align='center' class='img-circle' type='image' height='239px' width='239px' src=\"$file\">";
-                        echo "<a name='$name' href='php/Browse.php'><img class='img-circle' height='239px' width='250px' src=\"$file\"></a>";
 
+                    $file = "img/$row[1]";
+                    $link = "" . $row[0];
+
+                    if(file_exists($file)){
+                        //echo "<h6>FILE EXISTS</h6>";
+                        //send the content information
+                        //header("Content-Type: {$info['mime']}\n");
+                        //header("Content-Disposition: inline; filename=\"$name\"\n");
+                        //header("Content-Length: $fs\n");
+                        //echo "<input align='center' class='img-circle' type='image' height='239px' width='239px' src=\"$file\">";
+
+                        //readfile($image);
+                        echo "<a name='$name' href='php/Home.php?university=$link'><img class='img-circle' height='250px' width='250px' src='$file'/></a>";
                     }
-                    $link = "link" . $row[0];
-                    echo "<h5><a name='$link' href='php/Browse.php'>$row[1]</a></h5>";
+                    else{
+                        echo "<a name='$name' href='php/Home.php?university=$link'><img class='img-circle' height='250px' width='250px' src='img/unavailable.png'/></a>";
+                    }
+                    echo "<h5><a name='$link' href='php/Home.php?university=$link'>$link</a></h5>";
                     //echo "<p>$row[1]</p>";
                     //$s = "Middle" . $count;
-
-                    if (!isset($_POST[$name]) || !isset($_POST[$link])){
-                        $_SESSION["favcolor"] = "green";
-                        $_SESSION["favanimal"] = "cat";
-                    }
-
-
 
                     echo "</div>";
 
@@ -208,9 +217,7 @@ $slidecount = 0;
     </div>
 </div>
 
-
-
-<div class="footer">
+    <div class="footer">
     <div class="row">
         <div class="col-md-1">
         </div>
@@ -226,6 +233,8 @@ $slidecount = 0;
             </ul>
         </div>
     </div>
+</div>
+
 </div>
 </body>
 </html>

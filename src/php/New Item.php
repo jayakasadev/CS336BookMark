@@ -2,6 +2,15 @@
 /**
  * Created by IntelliJ IDEA.
  * User: Jaya
- * Date: 4/25/2015
- * Time: 2:23 PM
  */
+session_start();
+include "../html/Header.html";
+
+
+echo "<script type='text/javascript' src='../js/headermodifiers/accounthead.js'></script>";
+//print_r($_SESSION);
+?>
+
+<?php
+include "../html/Footer.html";
+?>

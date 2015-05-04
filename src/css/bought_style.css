@@ -1,0 +1,50 @@
+.jumbotron{
+    background: url("../img/cart_jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50%;
+    color: white;
+    margin-inside: 10px;
+}
+
+.jumbotron div{
+    text-align: center;
+    padding: 80px;
+    margin-top: 50px;
+    color: white;
+    border: 2px solid #FF193B;
+}
+
+.jumbotron h1{
+    background: #FF193B;
+}
+
+.items h1{
+    margin-left: 7%;
+}
+
+.cartitems{
+    border-radius: 12px;
+    background: white;
+}
+
+.img-rounded{
+    max-width: 180px;
+    max-height: 180px;
+}
+
+
+#nav {
+    text-align: center;
+}
+
+#nav ul {
+    list-style: none;
+    margin: 20px auto;
+}
+
+#nav li {
+    display: inline-block;
+    margin: 5px 30px;
+}

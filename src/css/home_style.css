@@ -1,0 +1,35 @@
+.jumbotron{
+    background: url("../img/home_jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50%;
+    color: white;
+    margin-inside: 10px;
+}
+
+.jumbotron div{
+    text-align: center;
+    padding: 80px;
+    margin-top: 50px;
+    color: white;
+    border: 2px solid #FF193B;
+}
+
+.jumbotron h1{
+    background: #FF193B;
+}
+
+.items h1{
+    margin-left: 7%;
+}
+
+.newitems, .popularitems{
+    border-radius: 12px;
+    background: white;
+}
+
+.img-rounded{
+    max-width: 150px;
+    max-height: 150px;
+}

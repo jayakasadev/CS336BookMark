@@ -1,0 +1,88 @@
+.jumbotron{
+    background: url("../img/main_jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50%;
+    color: white;
+    margin-inside: 10px;
+}
+
+.jumbotron div{
+    text-align: center;
+    padding: 80px;
+    margin-top: 50px;
+    color: white;
+    border: 2px solid #FF193B;
+}
+
+.jumbotron h1{
+    background: #FF193B;
+}
+
+.jumbotron h4{
+    font-size: 30px;
+    background: #FF193B;
+}
+
+.img-rounded{
+    max-width: 150px;
+    max-height: 150px;
+}
+
+/* Carousel */
+
+.slider {
+    position: relative;
+    width: 100%;
+    width: 100%;
+}
+
+.slide {
+    background: transparent url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/flipboard/feature-gradient-transparent.png') center center no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+.active-slide {
+    display: block;
+}
+
+.slider-nav {
+    padding-bottom: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.arrow-prev {
+    margin-right: 45px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 9px;
+}
+
+.arrow-next {
+    margin-left: 45px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 9px;
+}
+
+.slider-dots {
+    list-style: none;
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.slider-dots li {
+    color: #262626;
+    display: inline;
+    font-size: 30px;
+    margin-right: 5px;
+}
+
+.slider-dots li.active-dot {
+    color: #FF193B;
+}
