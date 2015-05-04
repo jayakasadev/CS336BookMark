@@ -15,6 +15,8 @@ if(isset($_SESSION['username'])){
 }
 //print_r($_SESSION);
 
+$university = $_SESSION['university'];
+
 ?>
 <div class="headline jumbotron">
     <div class="container">
@@ -26,25 +28,51 @@ if(isset($_SESSION['username'])){
     <form action="../php/Browse.php" method="post">
         <div class="row">
             <div class="col-sm-1"></div>
-            <div align="center" class="col-sm-5">
+            <div align="center" class="col-sm-8">
                 <input type="text" class="form-control" name="search" placeholder="Search:"
                        aria-describedby="basic-addon1"
                        value="<?php if (isset($_POST['search'])) echo $_POST['search']; ?>">
             </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".dropdown-toggle").dropdown('toggle');
+                });
+            </script>
+            <div align="center" class="col-sm-1">
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Order By:
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">By Title Ascending</a></li>
-                        <li><a href="#">By Title Descending</a></li>
-                        <li><a href="#">By Date Ascending</a></li>
-                        <li><a href="#">By Date Descending</a></li>
-                        <li><a href="#">By Views Ascending</a></li>
-                        <li><a href="#">By Views Descending</a></li>
-                        <li><a href="#">New - >Used</a></li>
-                        <li><a href="#">By Type</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid from item inner join university using (universityid) where universityname = '$university' order by title;" ?>">By
+                                Title Ascending</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid from item inner join university using (universityid) where universityname = '$university' order by title desc;" ?>">By
+                                Title Descending</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, date from item inner join university using (universityid) where universityname = '$university' order by date;" ?>">By
+                                Date Ascending</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, date from item inner join university using (universityid) where universityname = '$university' order by date desc;" ?>">By
+                                Date Descending</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, views from item inner join university using (universityid) where universityname = '$university' order by views;" ?>">By
+                                Views Ascending</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, views from item inner join university using (universityid) where universityname = '$university' order by views desc;" ?>">By
+                                Views Descending</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype;" ?>">New
+                                - >Used</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype desc;" ?>">Used
+                                - > New</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' order by special;" ?>">By
+                                Type</a></li>
+                        <li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' order by special desc;" ?>">By
+                                Type Descending</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,9 +94,11 @@ if(isset($_SESSION['username'])){
 
         $count = 0;
 
-        $university = $_SESSION['university'];
-
-        $q = "select image, title, itemid from item inner join university using (universityid) where universityname = '$university';";
+        if (isset($_GET['query'])) {
+            $q = $_GET['query'];
+        } else {
+            $q = "select image, title, itemid from item inner join university using (universityid) where universityname = '$university';";
+        }
 
         //run query
         $r = @mysqli_query($dbc, $q);
@@ -108,9 +138,6 @@ if(isset($_SESSION['username'])){
                 echo "</div>";
             }
         }
-
-        //close db
-        mysqli_free_result($r);
         mysqli_close($dbc);
         ?>
     </div>
