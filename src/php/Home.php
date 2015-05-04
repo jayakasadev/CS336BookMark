@@ -20,28 +20,6 @@ else if(isset($_GET['university'])) {
 else if(isset($_SESSION['university'])){
     echo "<script type='text/javascript' src='../js/headermodifiers/althomehead.js'></script>";
 }
-
-//main submit conditional
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-    //for processiong login
-    require ('login_func.inc.php');
-
-    //connect to db
-    require ('mysqlconnection.php');
-
-    //check login
-    list($check, $data) = check_item($dbc, $_POST['password']);
-
-    //everything is ok
-    if($check){
-        //set cookies
-        $_SESSION['username'] = $data['username'];
-    }
-
-    //close connection
-    mysqli_close($dbc);
-}
 //build body below
 ?>
 
@@ -58,7 +36,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require ('mysqlconnection.php');
 
         $university = $_SESSION['university'];
-        echo "<h1></h1>";
 
         $q = "select itemid, title, image,special from item where universityid = (select universityid from university where universityname = '$university') and itemowner != '$user' order by date desc limit 5;";
 

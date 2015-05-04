@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 </div>
                 <div class="row">
                     <div class="input col-lg-5">
-                        <h1 align="center">Delivery Address</h1>
+                        <h1 align="center">Edit Item</h1>
                         <input type="text" class="form-control" name="title" placeholder="Title" aria-describedby="basic-addon1"
                                value="<?php if(isset($_POST['title'])) echo $_POST['title'];?>">
                         <input type="text" class="form-control" name="description" placeholder="Description" aria-describedby="basic-addon1"
@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         </p>
                     </div>
                     <div class="col=lg-2"></div>
-                    <div class="col-lg-5">
+                    <div align="center" class="col-lg-5">
                         <?php
                         $image = $_GET['image'];
                         echo "<img align='center' class='img-rounded' src='$image'/>";

@@ -22,11 +22,13 @@ echo "<script type='text/javascript' src='../js/headermodifiers/accounthead.js'>
 <div class="buttons">
     <div class="row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-2">
+        <div align="center" class="col-sm-2">
             <a href='Sold.php' class='btn btn-default' role='button'>Sold Items</a>
         </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2">
+        <div align="center" class="col-sm-2">
+            <a href='NewItem.php' class='btn btn-default' role='button'>Add New Item</a>
+        </div>
+        <div align="center" class="col-sm-2">
             <a href='Bought.php' class='btn btn-default' role='button'>Bought Items</a>
         </div>
         <div class="col-sm-3"></div>
