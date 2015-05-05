@@ -141,14 +141,6 @@ $slidecount = 0;
                     $link = "" . $row[0];
 
                     if(file_exists($file)){
-                        //echo "<h6>FILE EXISTS</h6>";
-                        //send the content information
-                        //header("Content-Type: {$info['mime']}\n");
-                        //header("Content-Disposition: inline; filename=\"$name\"\n");
-                        //header("Content-Length: $fs\n");
-                        //echo "<input align='center' class='img-circle' type='image' height='239px' width='239px' src=\"$file\">";
-
-                        //readfile($image);
                         echo "<a name='$name' href='php/Home.php?university=$link'><img class='img-circle' height='250px' width='250px' src='$file'/></a>";
                     }
                     else{

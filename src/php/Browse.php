@@ -10,7 +10,6 @@ include "../html/Header.html";
 if(isset($_SESSION['username'])){
     echo "<script type='text/javascript' src='../js/headermodifiers/iteminfohead.js'></script>";
 } else {
-    $_SESSION['itemid'] = $_GET['itemid'];
     echo "<script type='text/javascript' src='../js/headermodifiers/altiteminfohead.js'></script>";
 }
 //print_r($_SESSION);
@@ -20,7 +19,7 @@ $university = $_SESSION['university'];
 ?>
 <div class="headline jumbotron">
     <div class="container">
-        <h1 align="center">Browse Items Available At Your School</h1>
+        <h1 align='center'>Browse Items Available At Your School</h1>
     </div>
 </div>
 
@@ -62,11 +61,11 @@ $university = $_SESSION['university'];
                             <a href="<?php echo "Browse.php?query=select image, title, itemid, views from item inner join university using (universityid) where universityname = '$university' order by views desc;" ?>">By
                                 Views Descending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype;" ?>">New
-                                - >Used</a></li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype;" ?>">Newest
+                                First</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype desc;" ?>">Used
-                                - > New</a></li>
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype desc;" ?>">Oldest
+                                First</a></li>
                         <li>
                             <a href="<?php echo "Browse.php?query=select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' order by special;" ?>">By
                                 Type</a></li>
@@ -78,7 +77,7 @@ $university = $_SESSION['university'];
             </div>
             <div align="center" class="col-sm-1">
                 <p class="submitbutton">
-                    <input type="submit" class="btn btn-success" name="submit" value="Search"/>
+                    <a><input type="submit" class="btn btn-success" name="submit" value="Search"/></a>
                 </p>
             </div>
             <div class="col-sm-1"></div>
@@ -93,13 +92,57 @@ $university = $_SESSION['university'];
         require('mysqlconnection.php');
 
         $count = 0;
+        $electronic = 0;
+        $book = 0;
 
-        if (isset($_GET['query'])) {
-            $q = $_GET['query'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $search = $_POST['search'];
+            $pieces = preg_split(' /[\s ,.?:<>] +/', $search);
+            $tail = 'and (';
+            $tick = 0;
+            foreach ($pieces as $piece) {
+                $piece = strtolower($piece);
+                if ($tick == 0) {
+                    $tail = $tail . "title like '%" . $piece . "%'";
+                    $tail = $tail . " or description like '%" . $piece . "%'";
+                    $tail = $tail . " or itemtype like '%" . $piece . "%'";
+                    $tail = $tail . " or price like '%" . $piece . "%'";
+                    $tail = $tail . " or itemcondition like '%" . $piece . "%'";
+                    $tail = $tail . " or itemowner like '%" . $piece . "%'";
+
+                    $tick++;
+                } else {
+                    $tail = $tail . " or title like '%" . $piece . "%'";
+                    $tail = $tail . " or description like '%" . $piece . "%'";
+                    $tail = $tail . " or itemtype like '%" . $piece . "%'";
+                    $tail = $tail . " or price like '%" . $piece . "%'";
+                    $tail = $tail . " or itemcondition like '%" . $piece . "%'";
+                    $tail = $tail . " or itemowner like '%" . $piece . "%'";
+                }
+                if ($piece == "electronic") {
+                    $electronic = 1;
+                }
+                if ($piece == "book") {
+                    $book = 1;
+                }
+            }
+            $tail = $tail . ");";
+            //echo "<h6>$tail</h6>";
+
+            if ($electronic == 1) {
+                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join electronics using(itemid) where universityname = '$university'" . $tail;
+            } else if ($book == 1) {
+                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join book using(itemid) where universityname = '$university'" . $tail;
+            } else {
+                $q = "select image, title, itemid, description from item inner join university using (universityid) where universityname = '$university'" . $tail;
+            }
         } else {
-            $q = "select image, title, itemid from item inner join university using (universityid) where universityname = '$university';";
+            if (isset($_GET['query'])) {
+                $q = $_GET['query'];
+            } else {
+                $q = "select image, title, itemid from item inner join university using (universityid) where universityname = '$university';";
+            }
         }
-
         //run query
         $r = @mysqli_query($dbc, $q);
 
