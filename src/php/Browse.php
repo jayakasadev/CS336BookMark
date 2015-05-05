@@ -94,6 +94,7 @@ $university = $_SESSION['university'];
         $count = 0;
         $electronic = 0;
         $book = 0;
+        $user = $_SESSION['username'];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $search = $_POST['search'];
@@ -130,17 +131,17 @@ $university = $_SESSION['university'];
             //echo "<h6>$tail</h6>";
 
             if ($electronic == 1) {
-                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join electronics using(itemid) where universityname = '$university'" . $tail;
+                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join electronics using(itemid) where universityname = '$university' and itemowner != '$user'" . $tail;
             } else if ($book == 1) {
-                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join book using(itemid) where universityname = '$university'" . $tail;
+                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join book using(itemid) where universityname = '$university' and itemowner != '$user'" . $tail;
             } else {
-                $q = "select image, title, itemid, description from item inner join university using (universityid) where universityname = '$university'" . $tail;
+                $q = "select image, title, itemid, special, description from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user'" . $tail;
             }
         } else {
             if (isset($_GET['query'])) {
                 $q = $_GET['query'];
             } else {
-                $q = "select image, title, itemid from item inner join university using (universityid) where universityname = '$university';";
+                $q = "select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user';";
             }
         }
         //run query
@@ -148,11 +149,37 @@ $university = $_SESSION['university'];
 
         if ($r) {
             while ($row = mysqli_fetch_row($r)) {
+                $rows = mysqli_num_rows($r);
+                $special = "" . $row[3];
                 $name = $row[2];
                 if ($count == 0) {
                     echo "<div class='slide'>";
                     echo "<div class='container'>";
                     echo "<div class='row'>";
+                }
+
+                if ($special != "Normal") {
+                    if ($special == "Electronic") {
+                        $q2 = "select itemid from electronics where itemid = '$name';";
+                        //echo $q2;
+                    } else {
+                        $q2 = "select itemid from book where itemid = '$name';";
+                        //echo $q2;
+                    }
+                    //run query
+                    $r2 = @mysqli_query($dbc, $q2);
+                    $row2 = mysqli_fetch_row($r2);
+
+                    if (is_null($row2[0])) {
+                        $q2 = "delete from item where itemid = '$name';";
+                        $r2 = @mysqli_query($dbc, $q2);
+
+                        $rows--;
+                        if ($rows == 0) {
+                            echo "<h1 align='center' class='col-md-10'>No Items Currently Listed</h1>";
+                        }
+                        continue;
+                    }
                 }
 
 

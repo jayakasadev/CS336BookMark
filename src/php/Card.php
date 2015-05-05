@@ -16,13 +16,44 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //for processiong login
     require ('card_func.inc.php');
 
+    if (isset($_GET['card'])) {
+        $card = $_GET['card'];
+        $cardholder = $_GET['cardholder'];
+        $cardtype = $_GET['cardtype'];
+        $expDate = $_GET['expDate'];
+        $street = $_GET['street'];
+        $state = $_GET['state'];
+        $city = $_GET['city'];
+        $zip = $_GET['zip'];
+
+        /*
+        echo "<h1>$card</h1>";
+        echo "<h1>$cardtype</h1>";
+        echo "<h1>$expDate</h1>";
+        echo "<h1>$street</h1>";
+        echo "<h1>$state</h1>";
+        echo "<h1>$city</h1>";
+        echo "<h1>$cardholder</h1>";
+        echo "<h1>$zip</h1>";
+        */
+    } else {
+        $card = $_POST['card'];
+        $cardholder = $_POST['cardholder'];
+        $cardtype = $_POST['cardtype'];
+        $expDate = $_POST['exp'];
+        $street = $_POST['street'];
+        $state = $_POST['state'];
+        $city = $_POST['city'];
+        $zip = $_POST['zip'];
+    }
+
     //check login
-    list($check, $data) = savecard($dbc, $_POST['card'], $_SESSION['username'], $_POST['cardholder'], $_POST['cardtype'], $_POST['exp'], $_GET['addressid'], $_POST['street'], $_POST['city'], $_POST['state'], $_POST['zip']);
+    list($check, $data) = savecard($dbc, $card, $_SESSION['username'], $cardholder, $cardtype, $expDate, $_GET['addressid'], $street, $city, $state, $zip);
 
     //everything is not ok
     $errors = '';
     if(!$check){
-        $errors = $data;
+        //$errors = $data;
     }
 }
 
@@ -34,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require "login_func.inc.php";
         //if no cookie is present
         if(isset($_POST['submit']) && isset($errors) && empty($errors)){
-            echo "<h1>EXITING</h1>>";
+            //echo "<h1>EXITING</h1>>";
             //close connection
 
             mysqli_close($dbc);
@@ -56,10 +87,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <div class="infoinput">
     <div class = "container input">
-        <form action="<?php echo "Card.php?addressid=" . $_GET['addressid']?>" method="post">
-            <fieldset class="fields container">
-                <div class="row">
-                    <div class="input col-lg-5">
+        <fieldset class="fields container">
+            <div class="row">
+                <div class="input col-lg-5">
+                    <form action="<?php echo "Card.php?addressid=" . $_GET['addressid'] ?>" method="post">
                         <h1 align="center">Card Information</h1>
                         <input type="text" class="form-control" name="card" placeholder="Card Number" maxlength="16" aria-describedby="basic-addon1"
                                value="<?php if(isset($_POST['card'])) echo $_POST['card'];?>">
@@ -82,67 +113,78 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <p class = "save" align="center">
                             <input type="submit" class="btn btn-default" name = "submit" value="Confirm Purchase"/>
                         </p>
-                    </div>
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5">
-                        <ul>
-                            <?php
-                            $username = $_SESSION['username'];
-
-                            $q = "select card, cardholder, cardtype, expDate, addressid, cardid from creditcard where username = '$username';";
-                            //echo $q;
-
-                            //run query
-                            $r = mysqli_query($dbc, $q);
-
-                            //check the query ran well
-                            if($r && mysqli_num_rows($r) > 0) {
-                                while($row = mysqli_fetch_row($r)) {
-                                    echo "<li>";
-                                    echo "<div>";
-
-                                    $id = $row[4];
-
-                                    $q2 = "select street, city, state, zip from address where addressid = '$id';";
-                                    //echo $q2;
-                                    //run query
-                                    $r2 = mysqli_query($dbc, $q2);
-
-                                    $card = "" . $row[0];
-                                    $cardholder = "" . $row[1];
-                                    $type = "" . $row[2];
-                                    $expDate = "" . $row[3];
-
-                                    $row2 = mysqli_fetch_row($r2);
-
-                                    $street = "" . $row2[0];
-                                    $city = "" . $row2[1];
-                                    $state = "" . $row2[2];
-                                    $zip = "" . $row2[3];
-
-                                    echo "<h4>$type</h4>";
-                                    echo "<h6>Card Number: $card</h6>";
-                                    echo "<h6>Card Holder: $cardholder</h6>";
-                                    echo "<h6>Expiration Date: $expDate</h6>";
-                                    echo "<h6>Street: $street</h6>";
-                                    echo "<h6>City: $city</h6>";
-                                    echo "<h6>State: $state</h6>";
-                                    echo "<h6>Zip: $zip</h6>";
-                                    $tempid = $_GET['addressid'];
-                                    echo "<a href='sale.php?cardid=$row[5]&addressid=$tempid' class='btn btn-default' role='button'>Confirm Purchase</a>";
-                                    echo "</div>";
-                                    echo "</li>";
-                                }
-                            }
-                            else{
-                                echo "<h1 align='center' class='col-md-10'>No Saved Cards</h1>";
-                            }
-                            ?>
-                        </ul>
-                    </div>
+                    </form>
                 </div>
-            </fieldset>
-        </form>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5">
+                    <ul>
+                        <?php
+                        $username = $_SESSION['username'];
+
+                        $q = "select card, cardholder, cardtype, expDate, addressid, cardid from creditcard where username = '$username';";
+                        //echo $q;
+
+                        //run query
+                        $r = mysqli_query($dbc, $q);
+
+                        //check the query ran well
+                        if ($r && mysqli_num_rows($r) > 0) {
+                            while ($row = mysqli_fetch_row($r)) {
+                                echo "<li>";
+                                echo "<div>";
+
+                                $id = $row[4];
+
+                                $q2 = "select street, city, state, zip from address where addressid = '$id';";
+                                //echo $q2;
+                                //run query
+                                $r2 = mysqli_query($dbc, $q2);
+
+                                $card = "" . $row[0];
+                                $_POST['card'] = $card;
+                                $cardholder = "" . $row[1];
+                                $_POST['cardholder'] = $cardholder;
+                                $type = "" . $row[2];
+                                $_POST['cardtype'] = $type;
+                                $expDate = "" . $row[3];
+                                $_POST['exp'] = $expDate;
+
+                                $row2 = mysqli_fetch_row($r2);
+
+                                $street = "" . $row2[0];
+                                $_POST['street'] = $street;
+                                $city = "" . $row2[1];
+                                $_POST['city'] = $city;
+                                $state = "" . $row2[2];
+                                $_POST['state'] = $state;
+                                $zip = "" . $row2[3];
+                                $_POST['zip'] = $zip;
+
+                                echo "<h4>$type</h4>";
+                                echo "<h6>Card Number: $card</h6>";
+                                echo "<h6>Card Holder: $cardholder</h6>";
+                                echo "<h6>Expiration Date: $expDate</h6>";
+                                echo "<h6>Street: $street</h6>";
+                                echo "<h6>City: $city</h6>";
+                                echo "<h6>State: $state</h6>";
+                                echo "<h6>Zip: $zip</h6>";
+                                $tempid = $_GET['addressid'];
+                                $linkaddr = "Card.php?addressid=" . $_GET['addressid'] . "&cardtype=" . $type . "&card=" . $card . "&cardholder=" . $cardholder . "&expDate=" . $expDate . "&street=" . $street . "&city=" . $city . "&state=" . $state . "&zip=" . $zip;
+                                echo "<form action='$linkaddr' method='post'>";
+                                echo "<p class = 'save' align='center'>";
+                                echo "<input type='submit' class='btn btn-default' name = 'submit' value='Confirm Purchase'/>";
+                                echo "</p>";
+                                echo "</form>";
+                                echo "</li>";
+                            }
+                        } else {
+                            echo "<h1 align='center' class='col-md-10'>No Saved Cards</h1>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </fieldset>
     </div>
 </div>
 

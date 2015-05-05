@@ -118,7 +118,7 @@ mysqli_close($dbc);
 <div class="info">
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-lg-4">
+        <div align="center" class="col-lg-4">
             <?php
             $file = "../img/$image";
             echo "<img class='img-rounded' src='$file'/>";
