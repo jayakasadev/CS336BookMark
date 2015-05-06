@@ -49,7 +49,7 @@ echo "<script type='text/javascript' src='../js/headermodifiers/carthead.js'></s
                     $seller = "" . $row[2];
                     $shipped = "" . $row[6];
 
-                    $q2 = "select image, title, description, price from item WHERE itemid = $id;";
+                    $q2 = "select image, title, description, price, itemid from item WHERE itemid = $id;";
 
                     //run query
                     $r2 = @mysqli_query($dbc, $q2);
@@ -60,7 +60,7 @@ echo "<script type='text/javascript' src='../js/headermodifiers/carthead.js'></s
                     $file = "../img/$image";
                     $title = "" . $row2[1];
                     $description = "" . $row2[2];
-                    $price = "" . $row[3];
+                    $price = "" . $row2[3];
 
                     echo "<div class='col-lg-2'>";
                     if (file_exists($file)) {

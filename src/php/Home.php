@@ -12,7 +12,7 @@ $user = "";
 if(isset($_SESSION['username'])){
     echo "<script type='text/javascript' src='../js/headermodifiers/homehead.js'></script>";
     $user = $_SESSION['username'];
-} else if (isset($_GET['university']) && !isset($_SESSION['username']) && !isset($_SESSION['university'])) {
+} else if (isset($_GET['university'])) {
     $_SESSION['university'] = $_GET['university'];
     echo "<script type='text/javascript' src='../js/headermodifiers/althomehead.js'></script>";
 }

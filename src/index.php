@@ -61,7 +61,6 @@ $slidecount = 0;
             <div class = "nav nav-pills pull-right">
                 <li role = presentation><a href="php/Login.php">Login</a></li>
                 <li role="presentation"><a href="php/NewAccount.php">New User</a></li>
-                <li role="presentation"><a href="html/Help.html">Help</a></li>
             </div>
         </div>
     </div>
@@ -80,7 +79,7 @@ $slidecount = 0;
 
     <div class="holder">
         <div class="container">
-            <div class="row slogans">z
+            <div class="row slogans">
                 <div class="col-sm-4 slogan">
                     <legend align="center">Find what you need</legend>
                     <p align="justify">Tired of looking through message boards to see what your classmates are selling? Wish it were easier to get what you need for school? At BookMark(et.), we make it easy for you to connect with your classmates and find the things you need.</p>

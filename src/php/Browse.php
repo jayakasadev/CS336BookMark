@@ -4,6 +4,7 @@
  * Created by IntelliJ IDEA.
  * User: Jaya
  */
+
 session_start();
 include "../html/Header.html";
 
@@ -16,6 +17,11 @@ if(isset($_SESSION['username'])){
 
 $university = $_SESSION['university'];
 
+
+$user = '';
+if (isset($_SESSION['username'])) {
+    $user = $_SESSION['username'];
+}
 ?>
 <div class="headline jumbotron">
     <div class="container">
@@ -43,34 +49,34 @@ $university = $_SESSION['university'];
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid from item inner join university using (universityid) where universityname = '$university' order by title;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by title;" ?>">By
                                 Title Ascending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid from item inner join university using (universityid) where universityname = '$university' order by title desc;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by title desc;" ?>">By
                                 Title Descending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, date from item inner join university using (universityid) where universityname = '$university' order by date;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, date, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by date;" ?>">By
                                 Date Ascending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, date from item inner join university using (universityid) where universityname = '$university' order by date desc;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, date, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by date desc;" ?>">By
                                 Date Descending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, views from item inner join university using (universityid) where universityname = '$university' order by views;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, views, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by views;" ?>">By
                                 Views Ascending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, views from item inner join university using (universityid) where universityname = '$university' order by views desc;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, views, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by views desc;" ?>">By
                                 Views Descending</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype;" ?>">Newest
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, itemtype, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by itemtype;" ?>">Newest
                                 First</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, itemtype from item inner join university using (universityid) where universityname = '$university' order by itemtype desc;" ?>">Oldest
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, itemtype, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by itemtype desc;" ?>">Oldest
                                 First</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' order by special;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by special;" ?>">By
                                 Type</a></li>
                         <li>
-                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' order by special desc;" ?>">By
+                            <a href="<?php echo "Browse.php?query=select image, title, itemid, special, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user' order by special desc;" ?>">By
                                 Type Descending</a></li>
                     </ul>
                 </div>
@@ -94,7 +100,7 @@ $university = $_SESSION['university'];
         $count = 0;
         $electronic = 0;
         $book = 0;
-        $user = $_SESSION['username'];
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $search = $_POST['search'];
@@ -131,9 +137,9 @@ $university = $_SESSION['university'];
             //echo "<h6>$tail</h6>";
 
             if ($electronic == 1) {
-                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join electronics using(itemid) where universityname = '$university' and itemowner != '$user'" . $tail;
+                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner, itemowner from item inner join university using (universityid) inner join electronics using(itemid) where universityname = '$university' and itemowner != '$user'" . $tail;
             } else if ($book == 1) {
-                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner from item inner join university using (universityid) inner join book using(itemid) where universityname = '$university' and itemowner != '$user'" . $tail;
+                $q = "select image, title, itemid, special, description, itemtype, price, itemcondition,itemowner, itemowner from item inner join university using (universityid) inner join book using(itemid) where universityname = '$university' and itemowner != '$user'" . $tail;
             } else {
                 $q = "select image, title, itemid, special, description from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user'" . $tail;
             }
@@ -141,7 +147,7 @@ $university = $_SESSION['university'];
             if (isset($_GET['query'])) {
                 $q = $_GET['query'];
             } else {
-                $q = "select image, title, itemid, special from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user';";
+                $q = "select image, title, itemid, special, itemowner from item inner join university using (universityid) where universityname = '$university' and itemowner != '$user';";
             }
         }
         //run query

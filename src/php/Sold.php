@@ -60,7 +60,7 @@ echo "<script type='text/javascript' src='../js/headermodifiers/carthead.js'></s
                     $file = "../img/$image";
                     $title = "" . $row2[1];
                     $description = "" . $row2[2];
-                    $price = "" . $row[3];
+                    $price = "" . $row2[3];
 
                     echo "<div class='col-lg-2'>";
                     if (file_exists($file)) {

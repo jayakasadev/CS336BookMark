@@ -16,12 +16,10 @@ else{
     //setcookie('first_name'. '', time()-3600, '/', '', 0, 0);
 
     if(isset($_SESSION['university'])){
-        $university = $_SESSION['university'];
         $_SESSION = array();
         session_destroy();
         setcookie('PHPSESSID', '',  time()-3600, '/', '', 0, 0);
 
-        $_SESSION['university'] = $university;
         redirect_user('../index.php');
     }
 }
